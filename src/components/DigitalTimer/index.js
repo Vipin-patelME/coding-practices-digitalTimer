@@ -3,30 +3,50 @@ import {Component} from 'react'
 import './index.css'
 
 class DigitalTimer extends Component {
-  state = {initialTime: 25, isStart: true, status: 'Running'}
-
-  onPause = () => {
-    this.setState({isStart: false, status: 'Paused'})
+  state = {
+    watchTime: '25:00',
+    initialTime: 25,
+    isStart: true,
+    status: 'Paused',
   }
 
-  onStart = () => {
-    this.setState({isStart: true, status: 'Running'})
+  componentDidMount() {
+    this.timerId = setInterval(this.increament, 1000)
+  }
+
+  increament = () => {
+    this.setState(prevState => ({
+      watchTime: parseInt(prevState.initialTime) + 1,
+    }))
   }
 
   onReset = () => {
-    this.setState({initialTime: 25, isStart: true})
+    this.setState({initialTime: 25, isStart: true, status: 'Paused'})
   }
 
   onDecreaseTime = () => {
-    this.setState(prevState => ({initialTime: prevState.initialTime - 1}))
+    this.setState(prevState => ({
+      initialTime: parseInt(prevState.initialTime) - 1,
+    }))
   }
 
   onIncreaseTime = () => {
-    this.setState(prevState => ({initialTime: prevState.initialTime + 1}))
+    this.setState(prevState => ({
+      initialTime: parseInt(prevState.initialTime) + 1,
+    }))
+  }
+
+  onPause = () => {
+    this.setState({isStart: true, status: 'Paused'})
+  }
+
+  onStart = () => {
+    this.setState({isStart: false, status: 'Running'})
   }
 
   render() {
-    const {initialTime, isStart, status} = this.state
+    const {watchTime, initialTime, isStart, status} = this.state
+    console.log(initialTime)
     return (
       <div className="bg-container">
         <h1>Digital Timer</h1>
@@ -34,7 +54,7 @@ class DigitalTimer extends Component {
           <div className="watch-item">
             <div className="watch-container">
               <div className="timer-cont">
-                <h1>{initialTime}</h1>
+                <h1>{watchTime}</h1>
                 <p>{status}</p>
               </div>
             </div>
@@ -44,22 +64,26 @@ class DigitalTimer extends Component {
                   {isStart ? (
                     <>
                       <img
+                        src="https://assets.ccbp.in/frontend/react-js/play-icon-img.png"
+                        alt="play icon"
+                        className="icon-size"
+                        onClick={this.onStart}
+                      />
+                      <button type="button" onClick={this.onStart}>
+                        Start
+                      </button>
+                    </>
+                  ) : (
+                    <>
+                      <img
                         src="https://assets.ccbp.in/frontend/react-js/pause-icon-img.png"
                         alt="pause icon"
                         className="icon-size"
                         onClick={this.onPause}
                       />
-                      <p>Pause</p>
-                    </>
-                  ) : (
-                    <>
-                      <img
-                        src="https://assets.ccbp.in/frontend/react-js/play-icon-img.png"
-                        alt="start icon"
-                        className="icon-size"
-                        onClick={this.onStart}
-                      />
-                      <p>Start</p>
+                      <button type="button" onClick={this.onPause}>
+                        Pause
+                      </button>
                     </>
                   )}
                 </div>
@@ -70,7 +94,9 @@ class DigitalTimer extends Component {
                     className="icon-size"
                     onClick={this.onReset}
                   />
-                  <p>Reset</p>
+                  <button type="button" onClick={this.onReset}>
+                    Reset
+                  </button>
                 </div>
               </div>
               <p className="timer-limit">Set timer limit</p>
