@@ -1,0 +1,82 @@
+/* Write your CSS here */
+
+.bg-container {
+  background-image: linear-gradient(to right, #ffffff, #cffcf1);
+  background-size: cover;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.watch-item {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.watch-container {
+  background-image: url(https://assets.ccbp.in/frontend/react-js/digital-timer-elapsed-bg.png);
+  min-height: 60%;
+  min-width: 60%;
+  height: 600px;
+  width: 700px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.timer-cont {
+  height: 180px;
+  width: 180px;
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 260px;
+}
+.icons-parent {
+  text-align: center;
+  display: flex;
+  justify-content: space-between;
+  margin-left: 20px;
+}
+.icon-container {
+  margin: 20px;
+  display: flex;
+  align-items: center;
+}
+.icon-size {
+  height: 30px;
+  width: 30px;
+}
+.timer-limit {
+  text-align: center;
+}
+.button-cont {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.minus-btn {
+  background-color: transparent;
+  border-style: none;
+  font-size: 40px;
+}
+.initial-time-heading {
+  height: 20px;
+  width: 50px;
+  font-size: 15px;
+  font-weight: 510;
+  text-align: center;
+  padding-top: 0px;
+  border-radius: 5px;
+  background-image: linear-gradient(to right, #00d9f5, #cffcf1);
+}
+.plus-btn {
+  background-color: transparent;
+  border-style: none;
+  font-size: 25px;
+}
